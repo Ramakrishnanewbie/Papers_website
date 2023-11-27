@@ -49,37 +49,52 @@
             margin-top: 20px;
         }
 
-        table {
-            width: 80%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background-color: #fff; /* Set table background color */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
-        }
-    
-        th, td {
-            padding: 15px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-        }
-    
-        th {
-            background-color: #333; /* Set header cell background color */
-            color: #fff; /* Set header cell text color */
-        }
-    
-        tr:hover {
-            background-color: #f5f5f5; /* Set hover effect color */
-        }
-    
-        a {
-            text-decoration: none;
-            color: #007bff; /* Set link color */
-        }
-    
-        a:hover {
-            text-decoration: underline;
-        }
+            /* Existing styles remain unchanged */
+        
+            /* Small devices (phones) */
+            @media only screen and (max-width: 600px) {
+                body {
+                    font-size: 14px;
+                }
+        
+                .dropdown select {
+                    font-size: 14px;
+                }
+            }
+        
+            /* Medium devices (small tablets) */
+            @media only screen and (min-width: 601px) and (max-width: 768px) {
+                body {
+                    font-size: 16px;
+                }
+        
+                .dropdown select {
+                    font-size: 16px;
+                }
+            }
+        
+            /* Large devices (larger tablets and desktops) */
+            @media only screen and (min-width: 769px) and (max-width: 1024px) {
+                body {
+                    font-size: 18px;
+                }
+        
+                .dropdown select {
+                    font-size: 18px;
+                }
+            }
+        
+            /* Extra small devices (phones) */
+            @media only screen and (max-width: 480px) {
+                body {
+                    font-size: 12px;
+                }
+        
+                .dropdown select {
+                    font-size: 12px;
+                }
+            }
+        
     </style>
     
     
