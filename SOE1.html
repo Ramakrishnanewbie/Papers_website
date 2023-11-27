@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School of Engineering</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+    
+        .header {
+            text-align: center;
+            padding: 20px 0;
+        }
+    
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    
+        .dropdown {
+            display: inline-block;
+            margin: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+    
+        .dropdown select {
+            padding: 8px;
+            font-size: 16px;
+            border: none;
+            outline: none;
+            background-color: #000;
+            color: #fff;
+            border-radius: 10px;
+        }
+    
+        #output {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff; /* Set table background color */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+        }
+    
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+    
+        th {
+            background-color: #333; /* Set header cell background color */
+            color: #fff; /* Set header cell text color */
+        }
+    
+        tr:hover {
+            background-color: #f5f5f5; /* Set hover effect color */
+        }
+    
+        a {
+            text-decoration: none;
+            color: #007bff; /* Set link color */
+        }
+    
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    
+    
+    
+</head>
+<body>
+    <div class="header">
+        <h1>School of Engineering</h1>
+    </div>
+
+    <div class="container">
+    <div class="dropdown" style="float:left">
+        <select id="branch" onchange="updateOutput()">
+            <option value="">Select Branch</option>
+            <option value="CSE">CSE</option>
+            <option value="IT">IT</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="AI">AI</option>
+            <option value="AIML">AIML</option>
+            <option value="CS">CS</option>
+            <option value="DS">DS</option>
+            <option value="MECH">MECH</option>
+            <option value="CHEM">CHEM</option>
+            <option value="CIVIL">CIVIL</option>
+            <!-- Add more branch options as needed -->
+        </select>
+    </div>
+
+    <div class="dropdown" style="float:right">
+        <select id="regulation" onchange="updateOutput()">
+            <option value="">Select Regulation</option>
+            <option value="R18">R18</option>
+            <option value="R19">R19</option>
+            <option value="R20">R20</option>
+            <option value="R21">R21</option>
+            <option value="R22">R22</option>
+            <option value="R23">R23</option>
+        </select>
+    </div>
+
+    <div class="dropdown" style="float:right">
+        <select id="year" onchange="updateOutput()">
+            <option value="">Select Year</option>
+            <option value="1st">1st</option>
+            <option value="2nd">2nd</option>
+            <option value="3rd">3rd</option>
+            <option value="4th">4th</option>
+        </select>
+    </div>
+
+
+
+    </div>
+    <div id="output"></div>
+
+    <!-- <script>
+        function updateOutput() {
+            var branch = document.getElementById("branch").value;
+            var year = document.getElementById("year").value;
+
+            var outputDiv = document.getElementById("output");
+
+            if (branch && year) {
+                outputDiv.innerHTML = "<p>Hi! You selected " + branch + " in Year " + year + ".</p>";
+            } else {
+                outputDiv.innerHTML = "";
+            }
+        }
+    </script> -->
+    
+    <script>
+        function updateOutput() {
+            var branch = document.getElementById("branch").value;
+            var year = document.getElementById("year").value;
+            var regulation = document.getElementById("regulation").value;
+    
+            var outputDiv = document.getElementById("output");
+    
+            if (branch && year && regulation) {
+                // Example data for the PDF files, replace this with your actual data
+                var pdfFiles = [
+                    "null.pdf"
+                ];
+    
+                // Clear previous content
+                outputDiv.innerHTML = "";
+    
+                // Create and append an <embed> tag for each PDF file
+                pdfFiles.forEach(function (pdfFile) {
+                    var embedElement = document.createElement("embed");
+                    embedElement.src = pdfFile + "#toolbar=0&navpanes=0";
+                    embedElement.type = "application/pdf";
+                    embedElement.width = "700px";
+                    embedElement.height = "500px";
+    
+                    // Append the <embed> tag to the outputDiv
+                    outputDiv.appendChild(embedElement);
+                });
+            } else {
+                // Clear output if branch or year is not selected
+                outputDiv.innerHTML = "";
+            }
+        }
+    </script>
+</body>
+</html>
