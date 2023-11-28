@@ -57,13 +57,58 @@ body .buttongroup button:hover {
     padding: 10px;
   }
   .buttongroup {
-    width: 100%; /* Full width on smaller screens */
-    justify-content: center; /* Center buttons on smaller screens */
+    width: 100%;
+    justify-content: center;
   }
   .buttongroup button {
-    width: 80%; /* Adjust button width for better spacing on smaller screens */
+    width: 80%;
   }
   .main-logo {
-    margin-right: 0; /* Reset margin for smaller screens */
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 480px) {
+  .Logo_section,
+  .main-logo-container,
+  .tagline,
+  .buttongroup {
+    padding: 5px;
+  }
+  .main-logo {
+    max-width: 250px;
+    height: 300px;
+  }
+  .buttongroup button {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 375px) {
+  .Logo_section,
+  .main-logo-container,
+  .tagline,
+  .buttongroup {
+    padding: 3px;
+  }
+  .main-logo {
+    max-width: 200px;
+    height: 250px;
+  }
+  .buttongroup button {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 320px) {
+  .Logo_section,
+  .main-logo-container,
+  .tagline,
+  .buttongroup {
+    padding: 2px;
+  }
+  .main-logo {
+    max-width: 150px;
+    height: 180px;
+  }
+  .buttongroup button {
+    width: 100%;
   }
 }/*# sourceMappingURL=style.css.map */

@@ -4,101 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>School of Engineering</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-    
-        .header {
-            text-align: center;
-            padding: 20px 0;
-        }
-    
-        .container {
-            text-align: center;
-            margin-top: 20px;
-        }
-    
-        .dropdown {
-            display: inline-block;
-            margin: 10px;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-    
-        .dropdown select {
-            padding: 8px;
-            font-size: 16px;
-            border: none;
-            outline: none;
-            background-color: #000;
-            color: #fff;
-            border-radius: 10px;
-        }
-    
-        #output {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-            /* Existing styles remain unchanged */
-        
-            /* Small devices (phones) */
-            @media only screen and (max-width: 600px) {
-                body {
-                    font-size: 14px;
-                }
-        
-                .dropdown select {
-                    font-size: 14px;
-                }
-            }
-        
-            /* Medium devices (small tablets) */
-            @media only screen and (min-width: 601px) and (max-width: 768px) {
-                body {
-                    font-size: 16px;
-                }
-        
-                .dropdown select {
-                    font-size: 16px;
-                }
-            }
-        
-            /* Large devices (larger tablets and desktops) */
-            @media only screen and (min-width: 769px) and (max-width: 1024px) {
-                body {
-                    font-size: 18px;
-                }
-        
-                .dropdown select {
-                    font-size: 18px;
-                }
-            }
-        
-            /* Extra small devices (phones) */
-            @media only screen and (max-width: 480px) {
-                body {
-                    font-size: 12px;
-                }
-        
-                .dropdown select {
-                    font-size: 12px;
-                }
-            }
-        
-    </style>
-    
-    
-    
+    <link rel="stylesheet" href="css/soe/soe.css">   
 </head>
 <body>
     <div class="header">
@@ -150,55 +56,46 @@
 
     </div>
     <div id="output"></div>
+    <div id="pdfViewer"></div>
 
-    <!-- <script>
-        function updateOutput() {
-            var branch = document.getElementById("branch").value;
-            var year = document.getElementById("year").value;
 
-            var outputDiv = document.getElementById("output");
-
-            if (branch && year) {
-                outputDiv.innerHTML = "<p>Hi! You selected " + branch + " in Year " + year + ".</p>";
-            } else {
-                outputDiv.innerHTML = "";
-            }
-        }
-    </script> -->
-    
     <script>
+        function renderpdf(pdfUrl) {
+            var outputDiv = document.getElementById("output");
+            var embedElement = document.createElement("embed");
+            embedElement.src = pdfUrl + "#toolbar=0&navpanes=0";
+            embedElement.type = "application/pdf";
+            embedElement.width = "700px";
+            embedElement.height = "550px";
+    
+            // Clear previous content
+            outputDiv.innerHTML = "";
+    
+            // Append the <embed> tag to the outputDiv
+            outputDiv.appendChild(embedElement);
+        }
+
         function updateOutput() {
             var branch = document.getElementById("branch").value;
             var year = document.getElementById("year").value;
             var regulation = document.getElementById("regulation").value;
     
-            var outputDiv = document.getElementById("output");
-    
             if (branch && year && regulation) {
                 // Example data for the PDF files, replace this with your actual data
                 var pdfFiles = [
                     "null.pdf"
+                    // Add more PDF files as needed
                 ];
-    
-                // Clear previous content
-                outputDiv.innerHTML = "";
-    
-                // Create and append an <embed> tag for each PDF file
-                pdfFiles.forEach(function (pdfFile) {
-                    var embedElement = document.createElement("embed");
-                    embedElement.src = pdfFile + "#toolbar=0&navpanes=0";
-                    embedElement.type = "application/pdf";
-                    embedElement.width = "700px";
-                    embedElement.height = "500px";
-    
-                    // Append the <embed> tag to the outputDiv
-                    outputDiv.appendChild(embedElement);
-                });
+
+                // Render the first PDF file
+                renderpdf(pdfFiles[0]);
             } else {
                 // Clear output if branch or year is not selected
-                outputDiv.innerHTML = "";
+                document.getElementById("output").innerHTML = "";
             }
         }
     </script>
+
+
 </body>
 </html>
